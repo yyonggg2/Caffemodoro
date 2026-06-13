@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+
+:root {
+  --accent-color-dark: #6b4c3b;
+  --accent-color: #6b4c3b;
+  --accent-color-light: #c4956a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+}
+
+#menu {
+  background-image: url("Drawings/menu2.0.png");
+  /* Don't stretch the original image — preserve its aspect ratio */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(80vw, 620px);
+  height: auto;
+  aspect-ratio: 3 / 4;
+  min-height: 50vh;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  /* 增加顶部内边距，让内容落在背景画布内部 */
+  padding: 28% 8% 10% 10%;
+  /* base size for everything inside menu */
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+}
+
+#menu button,
+#menu h2 {
+  font-family: "Caveat", cursive;
+}
+
+#menu button {
+  width: 75%;
+  padding: 0.4em 0.8em 0.8em 6em;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 1em; /* relative to #menu font-size */
+  cursor: pointer;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.drink-time {
+  font-size: 0.65em;
+  opacity: 0.5;
+  padding-bottom: 0.1em;
+}
+
+#menu button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 80px; /* 调这个值来控制向右偏移多少 */
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#menu button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 80px; /* 与 ::after 的 left 保持一致 */
+  right: 0;
+  background: rgba(242, 239, 239, 0.1);
+  opacity: 0;
+}
+
+#menu button:hover::before {
+  opacity: 1;
+}
+
+#menu-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* 内侧缩进，保持按钮与标题对齐 */
+  padding: 0 1.2em;
+}
+
+#menu h2 {
+  color: white;
+  font-size: 2.2em; /* relative to #menu font-size */
+  text-align: center;
+  padding: 0;
+  margin: 3.5em 0em 0.6em -1em;
+}
+
+body {
+  min-height: 100vh;
+  background: #fbf4e8;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.blob {
+  position: fixed;
+  opacity: 1;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.blob-1 {
+  width: 60vw;
+  height: 60vh;
+  background: var(--accent-color);
+  top: -100px;
+  left: -100px;
+  opacity: 1;
+}
+
+.blob-2 {
+  width: 80vw;
+  height: 80vh;
+  background: var(--accent-color-light);
+  bottom: -50px;
+  right: -50px;
+}
+
+.blob-3 {
+  width: 90vw;
+  height: 90vh;
+  background: var(--accent-color);
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+}
+
+.blob-4 {
+  height: 50vh;
+  width: 50vw;
+  background: var(--accent-color);
+  bottom: -100px;
+  left: -100px;
+  opacity: 0.8;
+}
+
+.blob-5 {
+  height: 50vh;
+  width: 50vw;
+  background: var(--accent-color-light);
+  top: -50px;
+  right: -50px;
+  opacity: 1;
+}
+
+.blob-6 {
+  height: 50vh;
+  width: 50vw;
+  background: var(--accent-color-dark);
+  top: -100px;
+  right: -100px;
+  opacity: 1;
+}
+
+.blob-7 {
+  height: 30vh;
+  width: 30vw;
+  background: var(--accent-color-dark);
+  top: 200px;
+  left: -50px;
+  opacity: 1;
+}
+
+.blob-8 {
+  width: 30vw;
+  height: 30vh;
+  background: var(--accent-color-dark);
+  bottom: -50px;
+  right: -50px;
+  opacity: 1;
+}

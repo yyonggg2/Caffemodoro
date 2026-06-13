@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caffemodoro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+    <div class="blob blob-6"></div>
+    <div class="blob blob-7"></div>
+    <div class="blob blob-8"></div>
+
+    <svg style="position:absolute; width:0; height:0;">
+      <filter id="watercolor">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="40" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </svg>
+
+    <div id="app">
+      <div id="menu">
+        <div id="menu-content">
+          <h2>Select a Drink</h2>
+        </div>
+      </div>
+      <div id="timer"></div>
+      <button id="start-btn">Start</button>
+      <button id="reset-btn">Reset</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
