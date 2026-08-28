@@ -1,0 +1,23 @@
+{
+  "name": "caffemodoro",
+  "version": "1.0.0",
+  "description": "A caffeine-themed pomodoro timer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.35.2"
+  },
+  "build": {
+    "appId": "com.caffemodoro.app",
+    "productName": "Caffemodoro",
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
