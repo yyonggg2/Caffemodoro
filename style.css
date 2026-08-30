@@ -38,12 +38,12 @@
   border: none;
   background: transparent;
   text-align: left;
-  font-family: "Caveat", cursive;
   font-size: 1em; /* relative to #menu font-size */
   cursor: pointer;
   color: white;
   position: relative;
   display: grid;
+  font-family: "Caveat", cursive;
   align-items: flex-end;
   grid-template-columns: 1fr 40px 80px;
 }
@@ -127,6 +127,12 @@
   object-fit: contain;
 }
 
+#drink-timer {
+  color: white;
+  font-family: "Caveat", cursive;
+  font-size: 4em;
+}
+
 body.drink-selected #menu {
   display: none;
 }
@@ -205,90 +211,6 @@ body {
   z-index: 0;
 }
 
-.blob {
-  position: fixed;
-  opacity: 1;
-  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-  filter: blur(80px);
-  z-index: 0;
-  display: none; /* blobs only show once a drink is selected */
-}
-
-body.drink-selected .blob {
-  display: block;
-}
-
-.blob-1 {
-  width: 60vw;
-  height: 60vh;
-  background: var(--accent-color);
-  top: -100px;
-  left: -100px;
-  opacity: 1;
-}
-
-.blob-2 {
-  width: 80vw;
-  height: 80vh;
-  background: var(--accent-color-light);
-  bottom: -50px;
-  right: -50px;
-}
-
-.blob-3 {
-  width: 90vw;
-  height: 90vh;
-  background: var(--accent-color);
-  top: 50%;
-  left: 50%;
-  opacity: 1;
-}
-
-.blob-4 {
-  height: 50vh;
-  width: 50vw;
-  background: var(--accent-color);
-  bottom: -100px;
-  left: -100px;
-  opacity: 0.8;
-}
-
-.blob-5 {
-  height: 50vh;
-  width: 50vw;
-  background: var(--accent-color-light);
-  top: -50px;
-  right: -50px;
-  opacity: 1;
-}
-
-.blob-6 {
-  height: 50vh;
-  width: 50vw;
-  background: var(--accent-color-dark);
-  top: -100px;
-  right: -100px;
-  opacity: 1;
-}
-
-.blob-7 {
-  height: 30vh;
-  width: 30vw;
-  background: var(--accent-color-dark);
-  top: 200px;
-  left: -50px;
-  opacity: 1;
-}
-
-.blob-8 {
-  width: 30vw;
-  height: 30vh;
-  background: var(--accent-color-dark);
-  bottom: -50px;
-  right: -50px;
-  opacity: 1;
-}
-
 #app > button {
   border: none;
   padding: 0;
@@ -296,66 +218,16 @@ body.drink-selected .blob {
   cursor: pointer;
 }
 
-.top {
-  width: 80px;
-  height: 40px;
-
-  background: rgb(255, 255, 238);
-  font-family: poppins;
-  font-size: 13px;
-  color: rgb(36, 38, 34);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 7mm;
-  outline: 2px solid rgb(36, 38, 34);
-
-  position: relative;
-  z-index: 2;
+#back-to-menu-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: white;
+  font-size: 1.1em;
+  padding: 0.4em 0.8em;
+  transition: transform 0.1s ease;
 }
 
-.bottom {
-  width: 80px;
-  height: 40px;
-
-  background: rgb(229, 229, 199);
-  font-family: poppins;
-  font-size: 13px;
-  color: rgb(36, 38, 34);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 7mm;
-  outline: 2px solid rgb(36, 38, 34);
-
-  position: relative;
-  z-index: 1;
-  top: -35px;
-  left: 0;
-}
-
-.bottom::before {
-  content: "";
-  width: 2px;
-  height: 9px;
-  background: rgb(36, 38, 34);
-  position: absolute;
-  bottom: 0;
-  left: 15%;
-  z-index: 3;
-}
-
-.bottom::after {
-  content: "";
-  width: 2px;
-  height: 9px;
-  background: rgb(36, 38, 34);
-  position: absolute;
-  bottom: 0;
-  right: 15%;
-  z-index: 3;
+#back-to-menu-btn:active {
+  transform: scale(0.8);
 }

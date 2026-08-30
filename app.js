@@ -12,8 +12,6 @@ const drinks = [
     minutes: 25,
     caffeine: 95,
     color: "#2a2929",
-    colorLight: "#C4956A",
-    colorDark: "#4B3C2A",
     image: "Assets/black_coffee_final.png",
     intro: "Classic black coffee, strong and simple.",
   },
@@ -22,8 +20,6 @@ const drinks = [
     minutes: 15,
     caffeine: 65,
     color: "#2C1A0E",
-    colorLight: "#784c35ad",
-    colorDark: "#170d01",
     image: "Assets/espresso_transparent.png",
     intro:
       'This product has proven the saying that "Concentration is essence", \nit serves the best along with sweet almond cookies.',
@@ -33,8 +29,6 @@ const drinks = [
     minutes: 20,
     caffeine: 75,
     color: "#7b4b1e",
-    colorLight: "#a87c3f",
-    colorDark: "#291b0d",
     image: "Assets/latte_transparent.png",
     intro:
       "Classic latte, rich and mellow, \nsuitable for serving hot or cold, always a solid choice!",
@@ -44,8 +38,6 @@ const drinks = [
     minutes: 35,
     caffeine: 70,
     color: "#35661d",
-    colorLight: "#7c9f10",
-    colorDark: "#083f0e",
     image: "Assets/matcha_transparent.png",
     intro:
       "Green is just such an empowering color! \nThis product has perfectly combined the unique aroma of matcha and the silky smoothness of milk. \nWith just one sip, you'll feel as though you're right there in the tea garden.",
@@ -54,31 +46,25 @@ const drinks = [
     name: "Hojicha Latte",
     minutes: 45,
     caffeine: 30,
-    color: "#6c4222",
-    colorLight: "#dea76d",
-    colorDark: "#421a06",
+    color: "#421a06",
     image: "Assets/hojicha_transparent.png",
     intro:
       "A milder product than matcha, \nthe deep roasting process gives it an even richer taste, \nbest in autumn and winter.",
   },
   {
     name: "Energy Drink",
-    minutes: 10,
+    minutes: 60,
     caffeine: 233,
-    color: "#bd3807",
-    colorLight: "#ef990fda",
-    colorDark: "#b11478",
+    color: "#3585d4",
     image: "Assets/energy_transparent.png",
     intro:
       "Not enough caffeine? \nWe've got u! \nEnergy Drink produced specifically for Hackers! \nNone sugar, but 300mg of caffeine! \nYou are guaranteed a boosted night if you have it.",
   },
   {
     name: "Coke",
-    minutes: 5,
+    minutes: 10,
     caffeine: 35,
-    color: "#56a6c2",
-    colorLight: "#e1e6ab",
-    colorDark: "#efe709",
+    color: "#351f03",
     image: "Assets/coke_transparent.png",
     intro:
       "Want a comfy drink that's sweet, sparkling, and contains a little caffeine? \nHackacola has got you!",
@@ -134,10 +120,7 @@ drinks.forEach(function (drink) {
     btn.classList.add("selected");
     selectedDrink = drink;
     document.getElementById("server").classList.add("picked");
-    showSpeech(
-      `You've selected ${drink.name}! Ready to start making it?`,
-      true,
-    );
+    showSpeech(`You've ordered ${drink.name}!`, true);
   });
 
   btn.addEventListener("mouseenter", function () {
@@ -153,10 +136,7 @@ drinks.forEach(function (drink) {
 
   btn.addEventListener("mouseleave", function () {
     if (selectedDrink) {
-      showSpeech(
-        `You've selected ${selectedDrink.name}! Ready to start making it?`,
-        true,
-      );
+      showSpeech(`You've ordered ${selectedDrink.name}!`, true);
     } else {
       showSpeech(WELCOME_TEXT, false);
     }
