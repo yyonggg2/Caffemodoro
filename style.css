@@ -111,6 +111,10 @@
   font-size: 0.9em;
 }
 
+#server-actions button:active {
+  transform: scale(0.8);
+}
+
 #drink-page {
   display: none;
   position: fixed;
@@ -121,10 +125,21 @@
   gap: 1em;
 }
 
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
 #drink-image {
   width: 20vw;
   aspect-ratio: 1 / 1;
   object-fit: contain;
+  animation: breathe 3s ease-in-out infinite;
 }
 
 #drink-timer {

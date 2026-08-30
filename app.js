@@ -46,7 +46,7 @@ const drinks = [
     name: "Hojicha Latte",
     minutes: 45,
     caffeine: 30,
-    color: "#421a06",
+    color: "#9c4e27",
     image: "Assets/hojicha_transparent.png",
     intro:
       "A milder product than matcha, \nthe deep roasting process gives it an even richer taste, \nbest in autumn and winter.",
