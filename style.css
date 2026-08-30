@@ -92,13 +92,39 @@
   border-top-color: white;
 }
 
-#server.picked {
-  background-image: url("Assets/frog1_transparent.png");
+#server-actions {
+  display: none;
+  gap: 0.5em;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+#server-actions.show {
+  display: flex;
+}
+
+#server-actions button {
+  padding: 0.2em 0.8em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9em;
 }
 
 #drink-page {
   display: none;
+  position: fixed;
+  inset: 0;
   background: var(--accent-color);
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+#drink-image {
+  width: 20vw;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
 }
 
 body.drink-selected #menu {

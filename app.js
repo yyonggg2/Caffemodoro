@@ -1,8 +1,10 @@
 let seconds = 25 * 60; // 25 minutes in seconds
 let timerId = null;
 let isRunning = false;
-let selectDrinks = null;
 let selectedDrink = null;
+
+const WELCOME_TEXT =
+  "Welcome! Put your mouse on the menu for a drink that you are interested in! Click a drink to select it~";
 
 const drinks = [
   {
@@ -12,6 +14,7 @@ const drinks = [
     color: "#2a2929",
     colorLight: "#C4956A",
     colorDark: "#4B3C2A",
+    image: "Assets/black_coffee_final.png",
     intro: "Classic black coffee, strong and simple.",
   },
   {
@@ -21,6 +24,7 @@ const drinks = [
     color: "#2C1A0E",
     colorLight: "#784c35ad",
     colorDark: "#170d01",
+    image: "Assets/espresso_transparent.png",
     intro:
       'This product has proven the saying that "Concentration is essence", \nit serves the best along with sweet almond cookies.',
   },
@@ -31,6 +35,7 @@ const drinks = [
     color: "#7b4b1e",
     colorLight: "#a87c3f",
     colorDark: "#291b0d",
+    image: "Assets/latte_transparent.png",
     intro:
       "Classic latte, rich and mellow, \nsuitable for serving hot or cold, always a solid choice!",
   },
@@ -41,6 +46,7 @@ const drinks = [
     color: "#35661d",
     colorLight: "#7c9f10",
     colorDark: "#083f0e",
+    image: "Assets/matcha_transparent.png",
     intro:
       "Green is just such an empowering color! \nThis product has perfectly combined the unique aroma of matcha and the silky smoothness of milk. \nWith just one sip, you'll feel as though you're right there in the tea garden.",
   },
@@ -51,6 +57,7 @@ const drinks = [
     color: "#6c4222",
     colorLight: "#dea76d",
     colorDark: "#421a06",
+    image: "Assets/hojicha_transparent.png",
     intro:
       "A milder product than matcha, \nthe deep roasting process gives it an even richer taste, \nbest in autumn and winter.",
   },
@@ -61,6 +68,7 @@ const drinks = [
     color: "#bd3807",
     colorLight: "#ef990fda",
     colorDark: "#b11478",
+    image: "Assets/energy_transparent.png",
     intro:
       "Not enough caffeine? \nWe've got u! \nEnergy Drink produced specifically for Hackers! \nNone sugar, but 300mg of caffeine! \nYou are guaranteed a boosted night if you have it.",
   },
@@ -71,10 +79,46 @@ const drinks = [
     color: "#56a6c2",
     colorLight: "#e1e6ab",
     colorDark: "#efe709",
+    image: "Assets/coke_transparent.png",
     intro:
       "Want a comfy drink that's sweet, sparkling, and contains a little caffeine? \nHackacola has got you!",
   },
 ];
+
+function showSpeech(text, showActions) {
+  document.getElementById("server-speech-text").textContent = text;
+  document
+    .getElementById("server-actions")
+    .classList.toggle("show", showActions);
+}
+
+function confirmDrink(drink) {
+  clearInterval(timerId);
+  seconds = drink.minutes * 60;
+  updateDisplay();
+  document.getElementById("drink-image").src = drink.image;
+  document.documentElement.style.setProperty("--accent-color", drink.color);
+  document.documentElement.style.setProperty(
+    "--accent-color-light",
+    drink.colorLight,
+  );
+  document.documentElement.style.setProperty(
+    "--accent-color-dark",
+    drink.colorDark,
+  );
+  document.body.classList.add("drink-selected");
+  isRunning = true;
+  timerId = setInterval(tick, 1000);
+}
+
+function deselectDrink() {
+  document.querySelectorAll("#menu button").forEach(function (b) {
+    b.classList.remove("selected");
+  });
+  document.getElementById("server").classList.remove("picked");
+  selectedDrink = null;
+  showSpeech(WELCOME_TEXT, false);
+}
 
 drinks.forEach(function (drink) {
   let btn = document.createElement("button");
@@ -83,47 +127,48 @@ drinks.forEach(function (drink) {
   btn.Qcaffeine = drink.caffeine;
   document.getElementById("menu-content").appendChild(btn);
 
-  btn.addEventListener("dblclick", function () {
-    clearInterval(timerId); // stop any existing timer
-    isRunning = false;
-    seconds = drink.minutes * 60; // set seconds based on drink
-    updateDisplay(); // update the display immediately
-    selectDrinks = drink;
-    document.documentElement.style.setProperty("--accent-color", drink.color);
-    document.documentElement.style.setProperty(
-      "--accent-color-light",
-      drink.colorLight,
-    );
-    document.documentElement.style.setProperty(
-      "--accent-color-dark",
-      drink.colorDark,
-    );
-  });
-
   btn.addEventListener("click", function () {
     document.querySelectorAll("#menu button").forEach(function (b) {
       b.classList.remove("selected");
     });
     btn.classList.add("selected");
     selectedDrink = drink;
-    document.getElementById("server-speech").textContent =
-      `You've selected ${drink.name}! \nReady to start making it?`;
     document.getElementById("server").classList.add("picked");
+    showSpeech(
+      `You've selected ${drink.name}! Ready to start making it?`,
+      true,
+    );
   });
 
   btn.addEventListener("mouseenter", function () {
     if (btn.classList.contains("selected")) {
-      document.getElementById("server-speech").textContent =
-        `Just to confirm that you've ordered ${drink.name}! `;
+      showSpeech(
+        `You've selected ${drink.name}! Ready to start making it?`,
+        true,
+      );
     } else {
-      document.getElementById("server-speech").textContent = drink.intro;
+      showSpeech(drink.intro, false);
     }
   });
 
   btn.addEventListener("mouseleave", function () {
-    document.getElementById("server-speech").textContent =
-      "Welcome! Put your mouse on the menu for a drink that you are interested in! Double click the menu to select a drink~";
+    if (selectedDrink) {
+      showSpeech(
+        `You've selected ${selectedDrink.name}! Ready to start making it?`,
+        true,
+      );
+    } else {
+      showSpeech(WELCOME_TEXT, false);
+    }
   });
+});
+
+document.getElementById("yes-btn").addEventListener("click", function () {
+  if (selectedDrink) confirmDrink(selectedDrink);
+});
+
+document.getElementById("no-btn").addEventListener("click", function () {
+  deselectDrink();
 });
 
 function updateDisplay() {
@@ -153,6 +198,8 @@ document
   .addEventListener("click", function () {
     clearInterval(timerId);
     isRunning = false;
-    seconds = selectDrinks ? selectDrinks.minutes * 60 : 25 * 60; // reset to selected drink time or default
+    document.body.classList.remove("drink-selected");
+    seconds = 25 * 60;
     updateDisplay();
+    deselectDrink();
   });
