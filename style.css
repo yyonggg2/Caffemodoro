@@ -66,6 +66,16 @@
   aspect-ratio: 839 / 979;
 }
 
+@keyframes serverBreathe {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.05);
+  }
+}
+
 #server-speech {
   position: absolute;
   bottom: 100%;
@@ -80,6 +90,7 @@
   font-size: 0.9em;
   text-align: center;
   white-space: pre-line;
+  animation: serverBreathe 3s ease-in-out infinite;
 }
 
 #server-speech::after {
