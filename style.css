@@ -30,11 +30,29 @@
   height: min(90vh, 1000px);
   width: auto;
   aspect-ratio: 768 / 994;
-  outline: 4px solid blue;
 }
 
-#menu h2 {
+#menu button {
+  width: 90%;
+  padding: 0.4em 0.8em 0.8em 60px;
+  border: none;
+  background: transparent;
+  text-align: left;
   font-family: "Caveat", cursive;
+  font-size: 1em; /* relative to #menu font-size */
+  cursor: pointer;
+  color: white;
+  position: relative;
+  display: grid;
+  align-items: flex-end;
+  grid-template-columns: 1fr 40px 80px;
+}
+
+.drink-time {
+  font-size: 0.65em;
+  opacity: 0.5;
+  padding-bottom: 0.1em;
+  text-align: right;
 }
 
 #server {
@@ -71,22 +89,6 @@
   transform: translateX(-50%);
   border: 8px solid transparent;
   border-top-color: white;
-}
-
-#menu button {
-  width: 90%;
-  padding: 0.4em 0.8em 0.8em 60px;
-  border: none;
-  background: transparent;
-  text-align: left;
-  font-family: "Caveat", cursive;
-  font-size: 1em; /* relative to #menu font-size */
-  cursor: pointer;
-  color: white;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
 }
 
 #drink-page {
@@ -132,13 +134,18 @@ body.drink-selected #drink-page {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 80px; /* 与 ::after 的 left 保持一致 */
+  left: 60px; /* 与 ::after 的 left 保持一致 */
   right: 0;
-  background: rgba(242, 239, 239, 0.1);
+  background: rgba(242, 239, 239, 0.2);
   opacity: 0;
 }
 
 #menu button:hover::before {
+  opacity: 1;
+}
+
+#menu button.selected::before {
+  background: rgba(242, 239, 239, 0.4);
   opacity: 1;
 }
 
@@ -147,8 +154,7 @@ body.drink-selected #drink-page {
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 12% 3% 6% 3%; /* 上，右，下，左*/
-  outline: 4px solid limegreen; /* DEBUG: this is the #menu-content box */
+  padding: 42% 3% 6% 3%; /* 上，右，下，左*/
 }
 
 #menu h2 {
