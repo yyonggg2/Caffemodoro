@@ -69,16 +69,17 @@
 #server-speech {
   position: absolute;
   bottom: 100%;
-  left: 50%;
+  left: 30%;
   transform: translateX(-50%);
   background: white;
   color: #333;
   padding: 0.5em 0.8em;
   border-radius: 12px;
   width: max-content;
-  max-width: 200px;
+  max-width: 350px;
   font-size: 0.9em;
   text-align: center;
+  white-space: pre-line;
 }
 
 #server-speech::after {
@@ -89,6 +90,10 @@
   transform: translateX(-50%);
   border: 8px solid transparent;
   border-top-color: white;
+}
+
+#server.picked {
+  background-image: url("Assets/frog1_transparent.png");
 }
 
 #drink-page {

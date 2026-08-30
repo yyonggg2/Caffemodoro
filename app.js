@@ -2,6 +2,7 @@ let seconds = 25 * 60; // 25 minutes in seconds
 let timerId = null;
 let isRunning = false;
 let selectDrinks = null;
+let selectedDrink = null;
 
 const drinks = [
   {
@@ -21,7 +22,7 @@ const drinks = [
     colorLight: "#784c35ad",
     colorDark: "#170d01",
     intro:
-      'This product has proven the saying that "Concentration is essence", it serves the best along with sweet almond cookies.',
+      'This product has proven the saying that "Concentration is essence", \nit serves the best along with sweet almond cookies.',
   },
   {
     name: "Latte",
@@ -31,7 +32,7 @@ const drinks = [
     colorLight: "#a87c3f",
     colorDark: "#291b0d",
     intro:
-      "Classic latte, rich and mellow, suitable for serving hot or cold, always a solid choice!",
+      "Classic latte, rich and mellow, \nsuitable for serving hot or cold, always a solid choice!",
   },
   {
     name: "Matcha Latte",
@@ -41,7 +42,7 @@ const drinks = [
     colorLight: "#7c9f10",
     colorDark: "#083f0e",
     intro:
-      "Green is just such an empowering color! This product has perfectly combined the unique aroma of matcha and the silky smoothness of milk. With just one sip, you'll feel as though you're right there in the tea garden.",
+      "Green is just such an empowering color! \nThis product has perfectly combined the unique aroma of matcha and the silky smoothness of milk. \nWith just one sip, you'll feel as though you're right there in the tea garden.",
   },
   {
     name: "Hojicha Latte",
@@ -51,7 +52,7 @@ const drinks = [
     colorLight: "#dea76d",
     colorDark: "#421a06",
     intro:
-      "A milder product than matcha, the deep roasting process gives it an even richer taste, best in autumn and winter.",
+      "A milder product than matcha, \nthe deep roasting process gives it an even richer taste, \nbest in autumn and winter.",
   },
   {
     name: "Energy Drink",
@@ -61,7 +62,7 @@ const drinks = [
     colorLight: "#ef990fda",
     colorDark: "#b11478",
     intro:
-      "Not enough caffeine? We've got u! Energy Drink produced specifically for Hackers! No sugar, but 300mg of caffeine! You are guaranteed a boosted night if you have it.",
+      "Not enough caffeine? \nWe've got u! \nEnergy Drink produced specifically for Hackers! \nNone sugar, but 300mg of caffeine! \nYou are guaranteed a boosted night if you have it.",
   },
   {
     name: "Coke",
@@ -71,7 +72,7 @@ const drinks = [
     colorLight: "#e1e6ab",
     colorDark: "#efe709",
     intro:
-      "Want a comfy drink that's sweet, sparkling, and contains a little caffeine? Hackacola has got you!",
+      "Want a comfy drink that's sweet, sparkling, and contains a little caffeine? \nHackacola has got you!",
   },
 ];
 
@@ -104,12 +105,16 @@ drinks.forEach(function (drink) {
       b.classList.remove("selected");
     });
     btn.classList.add("selected");
+    selectedDrink = drink;
+    document.getElementById("server-speech").textContent =
+      `You've selected ${drink.name}! \nReady to start making it?`;
+    document.getElementById("server").classList.add("picked");
   });
 
   btn.addEventListener("mouseenter", function () {
     if (btn.classList.contains("selected")) {
       document.getElementById("server-speech").textContent =
-        `You've selected ${drink.name}! Ready to start making it?`;
+        `Just to confirm that you've ordered ${drink.name}! `;
     } else {
       document.getElementById("server-speech").textContent = drink.intro;
     }
