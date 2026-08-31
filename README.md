@@ -36,4 +36,4 @@ Nothing fancy here, this was built for fun and for me to enjoy drawing :)
 - **Claude**-debugging, skipping tedious process (ex. duplicating sound effects)
 
 # 5. Demo
-![Demo](https://yyonggg2.github.io/Caffemodoro/)
+https://yyonggg2.github.io/Caffemodoro/
