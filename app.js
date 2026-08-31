@@ -3,8 +3,33 @@ let timerId = null;
 let isRunning = false;
 let selectedDrink = null;
 
+const bgm = document.getElementById("bgm-sound");
+const buttonSound = document.getElementById("button-sound");
+let musicPlaying = false;
+
+buttonSound.playbackRate = 1.5;
+
+function playButtonSound() {
+  buttonSound.currentTime = 0;
+  buttonSound.play();
+}
+
+document
+  .getElementById("music-toggle-btn")
+  .addEventListener("click", function () {
+    playButtonSound();
+    if (musicPlaying) {
+      bgm.pause();
+      this.textContent = "🔇";
+    } else {
+      bgm.play();
+      this.textContent = "🔊";
+    }
+    musicPlaying = !musicPlaying;
+  });
+
 const WELCOME_TEXT =
-  "Welcome! Put your mouse on the menu for a drink that you are interested in! Click a drink to select it~";
+  "Welcome! \nPut your mouse on the menu for a drink that you are interested in! \nClick a drink to select it~";
 
 const drinks = [
   {
@@ -62,7 +87,7 @@ const drinks = [
   },
   {
     name: "Coke",
-    minutes: 10,
+    minutes: 0.1,
     caffeine: 35,
     color: "#351f03",
     image: "Assets/coke_transparent.png",
@@ -114,6 +139,7 @@ drinks.forEach(function (drink) {
   document.getElementById("menu-content").appendChild(btn);
 
   btn.addEventListener("click", function () {
+    playButtonSound();
     document.querySelectorAll("#menu button").forEach(function (b) {
       b.classList.remove("selected");
     });
@@ -144,10 +170,12 @@ drinks.forEach(function (drink) {
 });
 
 document.getElementById("yes-btn").addEventListener("click", function () {
+  playButtonSound();
   if (selectedDrink) confirmDrink(selectedDrink);
 });
 
 document.getElementById("no-btn").addEventListener("click", function () {
+  playButtonSound();
   deselectDrink();
 });
 
@@ -168,18 +196,54 @@ function tick() {
   if (seconds <= 0) {
     clearInterval(timerId);
     isRunning = false;
-    alert("Time is up!");
+    document.getElementById("bell-sound").play();
+    document.getElementById("drink-finished-message").textContent =
+      "You've finished your drink~ Anything else?";
+    document.getElementById("drink-finished-message").style.display = "block";
   }
+}
+
+function goBackToMenu() {
+  clearInterval(timerId);
+  isRunning = false;
+  document.body.classList.remove("drink-selected");
+  seconds = 25 * 60;
+  updateDisplay();
+  deselectDrink();
+
+  const bellSound = document.getElementById("bell-sound");
+  bellSound.pause();
+  bellSound.currentTime = 0;
+  document.getElementById("drink-finished-message").style.display = "none";
 }
 
 // Reset button event listener
 document
   .getElementById("back-to-menu-btn")
   .addEventListener("click", function () {
-    clearInterval(timerId);
-    isRunning = false;
-    document.body.classList.remove("drink-selected");
-    seconds = 25 * 60;
-    updateDisplay();
-    deselectDrink();
+    playButtonSound();
+    if (isRunning) {
+      document.getElementById("confirm-leave-modal").classList.add("show");
+      return;
+    }
+    goBackToMenu();
+  });
+
+document
+  .getElementById("confirm-leave-yes-btn")
+  .addEventListener("click", function () {
+    playButtonSound();
+    document
+      .getElementById("confirm-leave-modal")
+      .classList.remove("show");
+    goBackToMenu();
+  });
+
+document
+  .getElementById("confirm-leave-no-btn")
+  .addEventListener("click", function () {
+    playButtonSound();
+    document
+      .getElementById("confirm-leave-modal")
+      .classList.remove("show");
   });

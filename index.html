@@ -36,6 +36,7 @@
     </svg>
 
     <div id="app">
+      <button id="music-toggle-btn" type="button">🔇</button>
       <div id="menu">
         <div id="menu-content"></div>
       </div>
@@ -43,7 +44,7 @@
         <div id="server-speech">
           <div id="server-speech-text">
             Welcome! Put your mouse on the menu for a drink that you are
-            interested in! Click a drink to select it~
+            interested in! Double Click a drink to select it~
           </div>
           <div id="server-actions">
             <button id="yes-btn" type="button">Yes</button>
@@ -54,13 +55,27 @@
       <div id="drink-page">
         <img id="drink-image" src="" alt="" />
         <div id="drink-timer"></div>
+        <div id="drink-finished-message"></div>
         <button id="back-to-menu-btn" type="button">
           <div class="top">← Back</div>
           <div class="bottom"></div>
         </button>
+
+        <div id="confirm-leave-modal">
+          <div id="confirm-leave-text">
+            Your timer is still running! Are you sure you want to give up?
+          </div>
+          <div id="confirm-leave-actions">
+            <button id="confirm-leave-yes-btn" type="button">Yes</button>
+            <button id="confirm-leave-no-btn" type="button">No</button>
+          </div>
+        </div>
       </div>
     </div>
-
+    
+    <audio id="bell-sound" src="Assets/frog-alarm.mp3" loop></audio>
+    <audio id="bgm-sound" src="Assets/bgm.mp3" loop></audio>
+    <audio id="button-sound" src="Assets/button.mp3"></audio>
     <script src="app.js"></script>
   </body>
 </html>

@@ -34,7 +34,7 @@
 
 #menu button {
   width: 90%;
-  padding: 0.4em 0.8em 0.8em 60px;
+  padding: 1em 1em 0.8em 60px;
   border: none;
   background: transparent;
   text-align: left;
@@ -120,6 +120,47 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9em;
+}
+
+#confirm-leave-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: #333;
+  padding: 0.5em 0.8em;
+  border-radius: 12px;
+  width: max-content;
+  max-width: 350px;
+  font-size: 0.9em;
+  text-align: center;
+  white-space: pre-line;
+  z-index: 20;
+}
+
+#confirm-leave-modal.show {
+  display: block;
+}
+
+#confirm-leave-actions {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+#confirm-leave-actions button {
+  padding: 0.2em 0.8em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+#confirm-leave-actions:active {
+  transform: scale(0.8);
 }
 
 #server-actions button:active {
@@ -256,4 +297,27 @@ body {
 
 #back-to-menu-btn:active {
   transform: scale(0.8);
+}
+
+#music-toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+#music-toggle-btn:active {
+  transform: scale(0.8);
+}
+
+#drink-finished-message {
+  display: none;
+  color: white;
+  font-family: "Caveat", cursive;
+  font-size: 1.5em;
+  text-align: center;
 }
