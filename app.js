@@ -37,7 +37,7 @@ const drinks = [
     minutes: 25,
     caffeine: 95,
     color: "#2a2929",
-    image: "Assets/black_coffee_final.png",
+    image: "Drawings/black_coffee_final.png",
     intro: "Classic black coffee, strong and simple.",
   },
   {
@@ -45,7 +45,7 @@ const drinks = [
     minutes: 15,
     caffeine: 65,
     color: "#2C1A0E",
-    image: "Assets/espresso_transparent.png",
+    image: "Drawings/espresso_transparent.png",
     intro:
       'This product has proven the saying that "Concentration is essence", \nit serves the best along with sweet almond cookies.',
   },
@@ -54,7 +54,7 @@ const drinks = [
     minutes: 20,
     caffeine: 75,
     color: "#7b4b1e",
-    image: "Assets/latte_transparent.png",
+    image: "Drawings/latte_transparent.png",
     intro:
       "Classic latte, rich and mellow, \nsuitable for serving hot or cold, always a solid choice!",
   },
@@ -63,7 +63,7 @@ const drinks = [
     minutes: 35,
     caffeine: 70,
     color: "#35661d",
-    image: "Assets/matcha_transparent.png",
+    image: "Drawings/matcha_transparent.png",
     intro:
       "Green is just such an empowering color! \nThis product has perfectly combined the unique aroma of matcha and the silky smoothness of milk. \nWith just one sip, you'll feel as though you're right there in the tea garden.",
   },
@@ -72,7 +72,7 @@ const drinks = [
     minutes: 45,
     caffeine: 30,
     color: "#9c4e27",
-    image: "Assets/hojicha_transparent.png",
+    image: "Drawings/hojicha_transparent.png",
     intro:
       "A milder product than matcha, \nthe deep roasting process gives it an even richer taste, \nbest in autumn and winter.",
   },
@@ -81,7 +81,7 @@ const drinks = [
     minutes: 60,
     caffeine: 233,
     color: "#3585d4",
-    image: "Assets/energy_transparent.png",
+    image: "Drawings/energy_transparent.png",
     intro:
       "Not enough caffeine? \nWe've got u! \nEnergy Drink produced specifically for Hackers! \nNone sugar, but 300mg of caffeine! \nYou are guaranteed a boosted night if you have it.",
   },
@@ -90,7 +90,7 @@ const drinks = [
     minutes: 0.1,
     caffeine: 35,
     color: "#351f03",
-    image: "Assets/coke_transparent.png",
+    image: "Drawings/coke_transparent.png",
     intro:
       "Want a comfy drink that's sweet, sparkling, and contains a little caffeine? \nHackacola has got you!",
   },
