@@ -33,3 +33,7 @@ This is inspired by a side challenge from flavortown, I know it's being a long t
 Nothing fancy here, this was built for fun and for me to enjoy drawing :)
 
 - **HTML/CSS/JavaScript**-the whole app, no frameworks
+- **Claude**-debugging, skipping tedious process (ex. duplicating sound effects)
+
+# 5. Demo
+![Demo](https://yyonggg2.github.io/Caffemodoro/)
